@@ -5,7 +5,7 @@ const db = new Sequelize(
   process.env.USER, 
   process.env.PASSWORD,
   {
-    host: 'sql.freedb.tech',
+    host: process.env.DB_HOST || 'sql.freedb.tech',
     //host: 'localhost',
     port: 3306,
     dialect: "mysql",
