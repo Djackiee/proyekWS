@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express")
 const app = express()
 app.set("port", 3000)
@@ -22,8 +23,14 @@ app.use("/manufacturer",manufacturer);
 app.use("/reporter",reporter);
 
 
-app.listen(app.get("port"), () => {
-    console.log(`Server started at http://localhost:${app.get("port")}`)
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server started at http://localhost:${PORT}`);
+});
+
+app.get('/test', (req, res) => {
+  console.log("Test route hit!");
+  res.send("Test OK");
+});
 
 module.exports = app
