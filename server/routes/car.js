@@ -171,7 +171,7 @@ router.post("/manufacturer/new",async(req,res)=>{
             },
             headers: {
             'accept': 'application/json',
-            'X-Api-Key': 'Ir0NxLEnYpbDUmRS756CSg==g8eQQm0Cl53jqHnZ'
+            'X-Api-Key': '4LOPGxGX4/O1kovuYWUW4w==MzKpj7kYBiaKzEJZ'
             }
         });
         
