@@ -8,7 +8,8 @@ const Tier = require('../models/Tier');
 const Subscription = require('../models/Subscription');
 const JWT_KEY = 'SOAcars';
 const bcrypt = require("bcrypt");
-//Felix
+
+
 const checkUniqueEmail = async (email) => { 
     let user = await User.findOne({
         where:{
@@ -58,7 +59,7 @@ router.post("/register",async(req,res)=>{
 
 });
 
-//Felix
+
 router.post("/login",async(req,res)=>{
     let {email,password} = req.body;
 
@@ -112,7 +113,7 @@ router.post("/login",async(req,res)=>{
 
 });
 
-//Felix
+
 router.get("/tiers/:id",async(req,res)=>{
     const {id} = req.params;
     let tiers = await Tier.findOne({
@@ -151,7 +152,7 @@ router.get("/tiers/",async(req,res)=>{
 });
 
 
-//Felix
+
 router.post("/subscription",async(req,res)=>{
     let token = req.header('x-auth-token');
 
@@ -178,6 +179,10 @@ router.post("/subscription",async(req,res)=>{
                     idx:tier
                 }
             });
+
+            if(!getTier){
+                return res.status(404).send('Tier not found')
+            }
     
             let subscription = await Subsrciption.findOne({
                 where:{
@@ -210,7 +215,7 @@ router.post("/subscription",async(req,res)=>{
             }
             return res.status(200).send({
                 message:"Subscribe",
-                tier:tier,
+                tier:getTier.tier_name,
                 price:getTier.price,
                 left_access:`${amount} `
             });
@@ -226,7 +231,7 @@ router.post("/subscription",async(req,res)=>{
     
 });
 
-//Felix
+
 router.get("/profile", async(req,res)=>{
     let token = req.header('x-auth-token');
 
