@@ -226,7 +226,7 @@ router.post("/subscription",async(req,res)=>{
             });
         }
     } catch (error) {
-        return res.status(400).send({message:"Token Expired"});
+        return res.status(400).send({message: error.message});
     }
     
 });
