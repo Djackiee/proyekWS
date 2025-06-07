@@ -181,7 +181,7 @@ router.post("/subscription",async(req,res)=>{
             });
 
             if(!getTier){
-                return res.status(404).send('Tier not found')
+                return res.status(404).send({message: "Tier not found"})
             }
     
             let subscription = await Subsrciption.findOne({
