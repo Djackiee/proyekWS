@@ -154,6 +154,7 @@ router.get("/tiers/",async(req,res)=>{
 
 
 router.post("/subscription",async(req,res)=>{
+    console.log("msk");
     let token = req.header('x-auth-token');
 
     if(!req.header('x-auth-token')){
