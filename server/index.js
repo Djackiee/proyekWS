@@ -22,8 +22,9 @@ app.use("/manufacturer",manufacturer);
 app.use("/reporter",reporter);
 
 
-app.listen(app.get("port"), () => {
-    console.log(`Server started at http://localhost:${app.get("port")}`)
-})
+const PORT = process.env.PORT || 3000; 
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
 
 module.exports = app
